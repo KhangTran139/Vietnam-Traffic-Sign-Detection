@@ -1,0 +1,32 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+# Vẽ mAP50 và mAP50-95
+plt.plot(df['epoch'], df['metrics/mAP50(B)'], label='mAP50')
+plt.plot(df['epoch'], df['metrics/mAP50-95(B)'], label='mAP50-95')
+plt.xlabel('Epoch')
+plt.ylabel('mAP')
+plt.legend()
+plt.grid()
+plt.show()
+
+# Đường dẫn đến thư mục huấn luyện
+exp_dir = Path("runs/detect/traffic_signs_yolo11m")
+
+# Hiển thị các biểu đồ từ YOLO
+# (loss, precision, recall, mAP)
+plt.figure(figsize=(10, 7))
+img = plt.imread(exp_dir / "results.png")
+plt.imshow(img)
+plt.axis("off")
+plt.title("Training Metrics (Loss, mAP, Precision, Recall)")
+plt.show()
+
+# Nếu cần xem confusion matrix
+plt.figure(figsize=(6, 6))
+img2 = plt.imread(exp_dir / "confusion_matrix.png")
+plt.imshow(img2)
+plt.axis("off")
+plt.title("Confusion Matrix")
+plt.show()
