@@ -1,0 +1,8 @@
+!pip install roboflow
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="KVLLODSEnbg6NKcyQf8O")
+project = rf.workspace("khang-kax5r").project("vietnam-traffic-sign-altsi-eyvgv")
+version = project.version(1)
+dataset = version.download("yolov11")
+print("da tai xong data")
