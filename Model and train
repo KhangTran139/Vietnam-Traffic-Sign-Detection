@@ -1,0 +1,12 @@
+!pip install ultralytics
+
+from ultralytics import YOLO
+
+model = YOLO("yolo11m.pt")
+model.train(
+    data="/content/Vietnam-Traffic-Sign-1/data.yaml",
+    epochs=20,
+    imgsz=320,
+    batch=4,
+    name="traffic_signs_yolo11m"
+)
